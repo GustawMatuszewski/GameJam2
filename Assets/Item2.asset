@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8f1b61ce7f5b66f9acd51a9fe38201, type: 3}
   m_Name: Item2
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemType: 1
+  itemType: 3
   itemPrefab: {fileID: 842011742334393817, guid: 9f9d3dbfc15dcc46bba6f8c9c3404adc, type: 3}
