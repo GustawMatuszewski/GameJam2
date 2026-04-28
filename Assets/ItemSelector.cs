@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
+
 public class ItemSelector : MonoBehaviour
 {
     public List<ItemData> items;
@@ -59,5 +60,13 @@ public class ItemSelector : MonoBehaviour
         audioSource.Stop();
         audioSource.clip = clip;
         audioSource.Play();
+    }
+    // Add this public property
+    public GameObject CurrentInstance => currentInstance;
+
+    // Add this public method
+    public void RefreshDisplay()
+    {
+        SpawnItem(items[currentIndex]);
     }
 }
