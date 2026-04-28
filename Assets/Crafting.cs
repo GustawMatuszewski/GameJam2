@@ -12,8 +12,17 @@ public class Crafting : MonoBehaviour
     [Header("Output")]
     public Transform outputSpawnPoint;
     public ParticleSystem craftParticles;
+    public AudioClip[] craftSounds;
+    [Range(0f, 5f)] public float volume = 1f;
     public PlayerController player;
     public CameraMover move;
+    AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.spatialBlend = 0f;
+    }
 
     void Update()
     {
@@ -26,6 +35,7 @@ public class Crafting : MonoBehaviour
 
     IEnumerator CraftWithParticles(Vector3 point)
     {
+        PlaySound();
         if (craftParticles != null)
         {
             ParticleSystem p = Instantiate(craftParticles, point, Quaternion.identity);
@@ -68,4 +78,15 @@ public class Crafting : MonoBehaviour
             if (current[i] != required[i]) return false;
         return true;
     }
+
+    void PlaySound()
+{
+    if (craftSounds == null || craftSounds.Length == 0) return;
+    AudioClip clip = craftSounds[Random.Range(0, craftSounds.Length)];
+    audioSource.pitch = Random.Range(0.9f, 1.1f);
+    audioSource.volume = 1f;
+    audioSource.Stop();
+    audioSource.clip = clip;
+    audioSource.Play();
+}
 }
