@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class CameraMover : MonoBehaviour
 {
     public bool moveNow = false;
     public CameraPosController controller;
-    public Limb limb;
+    public List<Limb> limbs;
+    public PlayerController player;
 
     void Update()
     {
@@ -15,7 +17,6 @@ public class CameraMover : MonoBehaviour
             TriggerMovement();
             return;
         }
-
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -27,17 +28,51 @@ public class CameraMover : MonoBehaviour
         }
     }
 
+    bool AnyLimbDropped()
+    {
+        foreach (Limb limb in limbs)
+            if (limb != null && limb.itemWasDropped) return true;
+        return false;
+    }
+
+    void CollectDroppedItems()
+    {
+        foreach (Limb limb in limbs)
+        {
+            if (limb == null || !limb.itemWasDropped) continue;
+            if (limb.droppedItemData != null)
+                player.AddToInventory(limb.droppedItemData);
+            if (limb.droppedItemGO != null)
+                Destroy(limb.droppedItemGO);
+            limb.itemWasDropped = false;
+            limb.droppedItemGO = null;
+            limb.droppedItemData = null;
+        }
+    }
+
     private void TriggerMovement()
     {
         if (controller == null || controller.isLerping) return;
 
-        int nextIndex = (controller.currentIndex + 1) % controller.positions.Count;
+        bool wasAtLastIndex = controller.currentIndex == controller.positions.Count - 1;
+        if (wasAtLastIndex && AnyLimbDropped())
+            CollectDroppedItems();
 
-        if (limb != null && !limb.itemWasDropped)
+        int nextIndex;
+
+        if (controller.currentIndex == 2 && !AnyLimbDropped())
         {
-            bool isLastIndex = nextIndex == controller.positions.Count - 1;
-            if (isLastIndex)
-                nextIndex = (nextIndex + 1) % controller.positions.Count;
+            nextIndex = 0;
+        }
+        else
+        {
+            nextIndex = (controller.currentIndex + 1) % controller.positions.Count;
+            if (!AnyLimbDropped())
+            {
+                bool isLastIndex = nextIndex == controller.positions.Count - 1;
+                if (isLastIndex)
+                    nextIndex = (nextIndex + 1) % controller.positions.Count;
+            }
         }
 
         controller.currentIndex = nextIndex;

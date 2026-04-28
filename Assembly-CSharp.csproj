@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Assets/ItemData.cs" />
     <Compile Include="Assets/CraftingRecipe.cs" />
+    <Compile Include="Assets/Enemy.cs" />
     <Compile Include="Assets/CraftingEffect.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Readme.cs" />
     <Compile Include="Assets/CameraPosController.cs" />

@@ -25,6 +25,9 @@ public class Limb : MonoBehaviour
     public float textHeight = 2f;
     public CameraMover cameraMover;
     [HideInInspector] public bool itemWasDropped = false;
+    [HideInInspector] public GameObject droppedItemGO;
+    [HideInInspector] public ItemData droppedItemData;
+    Coroutine bobCoroutine;
     AudioSource audioSource;
 
     void Start()
@@ -104,6 +107,17 @@ public class Limb : MonoBehaviour
             cameraMover.moveNow = true;
     }
 
+    public void CollectDrop()
+    {
+        if (!itemWasDropped) return;
+        if (bobCoroutine != null) StopCoroutine(bobCoroutine);
+        if (droppedItemData != null) player.AddToInventory(droppedItemData);
+        if (droppedItemGO != null) Destroy(droppedItemGO);
+        itemWasDropped = false;
+        droppedItemGO = null;
+        droppedItemData = null;
+    }
+
     void SpawnFloatingText(string message, Color color, Vector3 worldPos)
     {
         GameObject go = new GameObject("FloatingText");
@@ -166,6 +180,9 @@ public class Limb : MonoBehaviour
         }
 
         itemWasDropped = false;
+        droppedItemGO = null;
+        droppedItemData = null;
+
         foreach (LimbDrop drop in drops)
         {
             if (drop.item == null || drop.item.itemPrefab == null) continue;
@@ -173,8 +190,10 @@ public class Limb : MonoBehaviour
             if (roll <= drop.dropChance)
             {
                 GameObject dropped = Instantiate(drop.item.itemPrefab, dropPos, Quaternion.identity);
-                StartCoroutine(DroppedItemAnimation(dropped.transform));
+                bobCoroutine = StartCoroutine(DroppedItemAnimation(dropped.transform));
                 itemWasDropped = true;
+                droppedItemGO = dropped;
+                droppedItemData = drop.item;
             }
         }
     }
