@@ -17,10 +17,10 @@ public class Crafting : MonoBehaviour
     public PlayerController player;
     public CameraMover move;
     AudioSource audioSource;
-
     [Header("Crafting Effect")]
     public CraftingEffect craftingEffect;
-
+    [Header("Post Craft Delay")]
+    public int postCraftDelay = 2;
     private bool isCrafting = false;
 
     void Start()
@@ -45,12 +45,10 @@ public class Crafting : MonoBehaviour
         foreach (CraftingRecipe recipe in recipes)
         {
             if (!Matches(current, recipe.ingredients)) continue;
-
             List<GameObject> itemGOs = new();
             foreach (var slot in slots)
                 if (slot.CurrentInstance != null)
                     itemGOs.Add(slot.CurrentInstance);
-
             isCrafting = true;
             StartCoroutine(DoCraft(itemGOs, recipe, hitPoint));
             return;
@@ -61,23 +59,31 @@ public class Crafting : MonoBehaviour
     IEnumerator DoCraft(List<GameObject> itemGOs, CraftingRecipe recipe, Vector3 center)
     {
         PlaySound();
-
         foreach (var go in itemGOs)
             go.transform.SetParent(null);
-
         yield return craftingEffect.PlayCraftSequence(
             itemGOs,
             outputSpawnPoint.position,
             recipe.output.itemPrefab
         );
-
         player.itemHeldData = recipe.output;
         Debug.Log("Crafted: " + recipe.output.name + " Type: " + recipe.output.itemType);
+        yield return new WaitForSeconds(postCraftDelay);
+        GameObject spawnedResult = craftingEffect.GetSpawnedResult();
+        if (spawnedResult != null)
+            Destroy(spawnedResult);
         move.moveNow = true;
+        ResetTable();
         isCrafting = false;
+    }
 
-        foreach (var slot in slots)
+    void ResetTable()
+    {
+        foreach (ItemSelector slot in slots)
+        {
+            slot.currentIndex = 0;
             slot.RefreshDisplay();
+        }
     }
 
     List<ItemData> GetCurrentItems()

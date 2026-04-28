@@ -153,8 +153,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
   currentIndex: 0
   selectParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
-  selectSounds: []
-  volume: 1
+  selectSounds:
+  - {fileID: 8300000, guid: d035613b77860f132a71052b63105e57, type: 3}
+  volume: 5
 --- !u!4 &264752108
 Transform:
   m_ObjectHideFlags: 0
@@ -341,8 +342,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
   currentIndex: 0
   selectParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
-  selectSounds: []
-  volume: 1
+  selectSounds:
+  - {fileID: 8300000, guid: d035613b77860f132a71052b63105e57, type: 3}
+  volume: 5
 --- !u!4 &336946815
 Transform:
   m_ObjectHideFlags: 0
@@ -509,13 +511,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737760752}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.5, y: 2.377, z: 5.4}
+  m_LocalRotation: {x: -0.11212629, y: 0.33240813, z: 0.039837245, w: 0.9355991}
+  m_LocalPosition: {x: -5.54, y: 0.62, z: 5.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -13.668, y: 39.119, z: 0}
 --- !u!1 &757832291
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +646,15 @@ MonoBehaviour:
   limbHp: 50
   magicType: 1
   player: {fileID: 1697567299}
-  hitParticles: {fileID: 1111336805347850232, guid: a957cd9967ab3cc6398c59ff215f8590, type: 3}
+  hitParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: def1289e7b8cd53dcaadfd492fb70b95, type: 3}
+  drops:
+  - item: {fileID: 11400000, guid: 3b40a97fab291cd7b9aea11e0cd38a08, type: 2}
+    dropChance: 49.8
+  - item: {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
+    dropChance: 49.5
+  dropDistance: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,11 +840,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bf120ed8ae5d1f74ab366ad611fe49c1, type: 2}
   outputSpawnPoint: {fileID: 888296019}
   craftParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
-  craftSounds: []
-  volume: 1
+  craftSounds:
+  - {fileID: 8300000, guid: d035613b77860f132a71052b63105e57, type: 3}
+  volume: 5
   player: {fileID: 1697567299}
   move: {fileID: 1820905747}
   craftingEffect: {fileID: 1663522491}
+  postCraftDelay: 2
 --- !u!1 &930556234
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,13 +967,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930556234}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.63, y: -0, z: 16.65}
+  m_LocalRotation: {x: -0.16574608, y: -0, z: -0, w: 0.9861685}
+  m_LocalPosition: {x: 2.84, y: 4.88, z: 13.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -19.081, y: 0, z: 0}
 --- !u!1 &931855022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1102,15 @@ MonoBehaviour:
   limbHp: 50
   magicType: 0
   player: {fileID: 1697567299}
-  hitParticles: {fileID: 1111336805347850232, guid: a957cd9967ab3cc6398c59ff215f8590, type: 3}
+  hitParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: def1289e7b8cd53dcaadfd492fb70b95, type: 3}
+  drops:
+  - item: {fileID: 11400000, guid: 3b40a97fab291cd7b9aea11e0cd38a08, type: 2}
+    dropChance: 49.8
+  - item: {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
+    dropChance: 49.5
+  dropDistance: 1
 --- !u!1 &1054563160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,8 +1145,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
   currentIndex: 0
   selectParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
-  selectSounds: []
-  volume: 1
+  selectSounds:
+  - {fileID: 8300000, guid: d035613b77860f132a71052b63105e57, type: 3}
+  volume: 5
 --- !u!4 &1054563162
 Transform:
   m_ObjectHideFlags: 0
@@ -1166,13 +1187,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139335153}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.54, y: 4.632, z: -3.665}
+  m_LocalRotation: {x: -0.31407472, y: -0, z: -0, w: 0.9493983}
+  m_LocalPosition: {x: 0.56, y: -0.06, z: 8.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -36.61, y: 0, z: 0}
 --- !u!1 &1178037806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,8 +1228,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
   currentIndex: 0
   selectParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
-  selectSounds: []
-  volume: 1
+  selectSounds:
+  - {fileID: 8300000, guid: d035613b77860f132a71052b63105e57, type: 3}
+  volume: 5
 --- !u!4 &1178037808
 Transform:
   m_ObjectHideFlags: 0
@@ -1258,8 +1280,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
   currentIndex: 0
   selectParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
-  selectSounds: []
-  volume: 1
+  selectSounds:
+  - {fileID: 8300000, guid: d035613b77860f132a71052b63105e57, type: 3}
+  volume: 5
 --- !u!4 &1248275384
 Transform:
   m_ObjectHideFlags: 0
@@ -1403,7 +1426,15 @@ MonoBehaviour:
   limbHp: 50
   magicType: 0
   player: {fileID: 1697567299}
-  hitParticles: {fileID: 1111336805347850232, guid: a957cd9967ab3cc6398c59ff215f8590, type: 3}
+  hitParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: def1289e7b8cd53dcaadfd492fb70b95, type: 3}
+  drops:
+  - item: {fileID: 11400000, guid: 3b40a97fab291cd7b9aea11e0cd38a08, type: 2}
+    dropChance: 49.8
+  - item: {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
+    dropChance: 49.5
+  dropDistance: 1
 --- !u!1 &1439026130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1574,7 @@ Transform:
   m_GameObject: {fileID: 1619460838}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.19, y: 1.1, z: 10.14}
+  m_LocalPosition: {x: 0.95, y: 2.31, z: 12.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1683,7 +1714,15 @@ MonoBehaviour:
   limbHp: 50
   magicType: 0
   player: {fileID: 1697567299}
-  hitParticles: {fileID: 1111336805347850232, guid: a957cd9967ab3cc6398c59ff215f8590, type: 3}
+  hitParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: def1289e7b8cd53dcaadfd492fb70b95, type: 3}
+  drops:
+  - item: {fileID: 11400000, guid: 3b40a97fab291cd7b9aea11e0cd38a08, type: 2}
+    dropChance: 49.8
+  - item: {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
+    dropChance: 49.5
+  dropDistance: 1
 --- !u!1 &1663522490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,10 +1754,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CraftingEffect
   flyDuration: 0.8
   shakeDuration: 0.5
-  shakeAmount: 0.16
+  shakeAmount: 0.37
   burstParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
   lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  lineWidth: 0.64
+  lineWidth: 1.74
   lineColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!4 &1663522492
 Transform:
@@ -2201,7 +2240,15 @@ MonoBehaviour:
   limbHp: 50
   magicType: 0
   player: {fileID: 1697567299}
-  hitParticles: {fileID: 1111336805347850232, guid: a957cd9967ab3cc6398c59ff215f8590, type: 3}
+  hitParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: def1289e7b8cd53dcaadfd492fb70b95, type: 3}
+  drops:
+  - item: {fileID: 11400000, guid: 3b40a97fab291cd7b9aea11e0cd38a08, type: 2}
+    dropChance: 49.8
+  - item: {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
+    dropChance: 49.5
+  dropDistance: 1
 --- !u!1 &2089168560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,13 +2369,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089168560}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.47, y: -0, z: 6.66}
+  m_LocalRotation: {x: -0, y: 0.2411538, z: -0, w: 0.97048694}
+  m_LocalPosition: {x: -5.39, y: 0, z: 9.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 27.909, z: 0}
 --- !u!1 &2127194990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,7 +2504,15 @@ MonoBehaviour:
   limbHp: 50
   magicType: 0
   player: {fileID: 1697567299}
-  hitParticles: {fileID: 1111336805347850232, guid: a957cd9967ab3cc6398c59ff215f8590, type: 3}
+  hitParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: def1289e7b8cd53dcaadfd492fb70b95, type: 3}
+  drops:
+  - item: {fileID: 11400000, guid: 3b40a97fab291cd7b9aea11e0cd38a08, type: 2}
+    dropChance: 49.8
+  - item: {fileID: 11400000, guid: a0fc0854a78ab7b6aa45ebdb843886de, type: 2}
+    dropChance: 49.5
+  dropDistance: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

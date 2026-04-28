@@ -16,13 +16,17 @@ public class CraftingEffect : MonoBehaviour
     public Color lineColor = Color.cyan;
 
     private List<LineRenderer> activeLines = new();
+    private GameObject spawnedResult;
+
+    public GameObject GetSpawnedResult() => spawnedResult;
 
     public IEnumerator PlayCraftSequence(
         List<GameObject> itemObjects,
         Vector3 center,
         GameObject resultPrefab)
     {
-        // Phase 1: Shake + draw lines to center
+        spawnedResult = null;
+
         List<Coroutine> shakes = new();
         foreach (var item in itemObjects)
         {
@@ -31,7 +35,6 @@ public class CraftingEffect : MonoBehaviour
             shakes.Add(StartCoroutine(ShakeObject(item.transform, shakeDuration, shakeAmount)));
         }
 
-        // Animate lines while shaking
         float elapsed = 0f;
         Vector3[] origins = new Vector3[itemObjects.Count];
         for (int i = 0; i < itemObjects.Count; i++)
@@ -49,12 +52,11 @@ public class CraftingEffect : MonoBehaviour
             yield return null;
         }
 
-        // Phase 2: Fly to center
         elapsed = 0f;
         while (elapsed < flyDuration)
         {
             elapsed += Time.deltaTime;
-            float t = 1f - Mathf.Pow(1f - elapsed / flyDuration, 3f); // ease-in-cubic
+            float t = 1f - Mathf.Pow(1f - elapsed / flyDuration, 3f);
 
             for (int i = 0; i < itemObjects.Count; i++)
             {
@@ -71,7 +73,6 @@ public class CraftingEffect : MonoBehaviour
             yield return null;
         }
 
-        // Phase 3: Disappear + burst
         foreach (var item in itemObjects)
             if (item != null) item.SetActive(false);
 
@@ -88,14 +89,12 @@ public class CraftingEffect : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-        // Phase 4: Spawn result with shake
         if (resultPrefab != null)
         {
-            GameObject result = Instantiate(resultPrefab, center, Quaternion.identity);
-            yield return StartCoroutine(ShakeObject(result.transform, 0.3f, 0.08f));
+            spawnedResult = Instantiate(resultPrefab, center, Quaternion.identity);
+            yield return StartCoroutine(ShakeObject(spawnedResult.transform, 0.3f, 0.08f));
         }
 
-        // Cleanup
         foreach (var item in itemObjects)
             if (item != null) Destroy(item);
     }
