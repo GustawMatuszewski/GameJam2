@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976a19e9f7bc1e33aabcc6155c4b8ebf, type: 3}
+  m_Name: RBaseball
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
+  ingredients:
+  - {fileID: 11400000, guid: 09153aeccc9f16c48a5f4edab42d1685, type: 2}
+  - {fileID: 11400000, guid: cb1a9f160a3e1ba34badf342136d414b, type: 2}
+  - {fileID: 11400000, guid: e14606e5f8e125534b7b04cfd02d74d4, type: 2}
+  - {fileID: 11400000, guid: 81f638843a9ffd6f9aed1ab34184ec0e, type: 2}
+  - {fileID: 11400000, guid: cb1a9f160a3e1ba34badf342136d414b, type: 2}
+  output: {fileID: 11400000, guid: bf440bce7852813cab8c1dd3b5593859, type: 2}
