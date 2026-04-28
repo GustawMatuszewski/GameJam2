@@ -104,7 +104,13 @@ public class Limb : MonoBehaviour
             TryDrop();
 
         if (cameraMover != null)
-            cameraMover.moveNow = true;
+            StartCoroutine(DelayedMove());
+    }
+
+    IEnumerator DelayedMove()
+    {
+        yield return new WaitForSeconds(2f);
+        cameraMover.moveNow = true;
     }
 
     public void CollectDrop()
