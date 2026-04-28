@@ -11,7 +11,6 @@ public class Crafting : MonoBehaviour
     [Header("Output")]
     public Transform outputSpawnPoint;
     public ParticleSystem craftParticles;
-    public bool craft = false;
     public PlayerController player;
     public CameraMover move;
 
@@ -19,21 +18,10 @@ public class Crafting : MonoBehaviour
     {
         if (!Mouse.current.leftButton.wasPressedThisFrame) return;
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit[] hits = Physics.RaycastAll(ray);
-        foreach (RaycastHit hit in hits)
-        {
-            if (hit.transform == transform || hit.transform.IsChildOf(transform))
-            {
-                craft = true;
-                SpawnParticles(hit.point);
-                break;
-            }
-        }
-        if (craft)
-        {
-            TryCraft();
-            craft = false;
-        }
+        if (!Physics.Raycast(ray, out RaycastHit hit)) return;
+        if (hit.transform != transform && !hit.transform.IsChildOf(transform)) return;
+        SpawnParticles(hit.point);
+        TryCraft();
     }
 
     void TryCraft()
