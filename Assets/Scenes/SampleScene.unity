@@ -825,8 +825,7 @@ MonoBehaviour:
   recipes:
   - {fileID: 11400000, guid: bf120ed8ae5d1f74ab366ad611fe49c1, type: 2}
   outputSpawnPoint: {fileID: 888296019}
-  craftParticles: {fileID: 1111336805347850232, guid: a957cd9967ab3cc6398c59ff215f8590, type: 3}
-  craft: 0
+  craftParticles: {fileID: 5363730864744749615, guid: 387256fc618ae05f6a0941954d27858d, type: 3}
   player: {fileID: 1697567299}
   move: {fileID: 1820905747}
 --- !u!1 &930556234

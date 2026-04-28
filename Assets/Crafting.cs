@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
@@ -20,7 +21,18 @@ public class Crafting : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (!Physics.Raycast(ray, out RaycastHit hit)) return;
         if (hit.transform != transform && !hit.transform.IsChildOf(transform)) return;
-        SpawnParticles(hit.point);
+        StartCoroutine(CraftWithParticles(hit.point));
+    }
+
+    IEnumerator CraftWithParticles(Vector3 point)
+    {
+        if (craftParticles != null)
+        {
+            ParticleSystem p = Instantiate(craftParticles, point, Quaternion.identity);
+            p.Play();
+            yield return new WaitForSeconds(p.main.duration);
+            Destroy(p.gameObject);
+        }
         TryCraft();
     }
 
@@ -55,13 +67,5 @@ public class Crafting : MonoBehaviour
         for (int i = 0; i < current.Count; i++)
             if (current[i] != required[i]) return false;
         return true;
-    }
-
-    void SpawnParticles(Vector3 point)
-    {
-        if (craftParticles == null) return;
-        ParticleSystem p = Instantiate(craftParticles, point, Quaternion.identity);
-        p.Play();
-        Destroy(p.gameObject, p.main.duration);
     }
 }
